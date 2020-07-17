@@ -1,10 +1,14 @@
 def weight_spec(filename):
     with open(filename) as f:
         lines = f.read().split('\n')
+#       Считываю матрицу в транспонированном виде
+        if lines[-1] == '':
+            del lines[-1]
         N = len(lines[0])
         k = len(lines)
-#       Считываю матрицу в транспонированном виде
         A = [[int(line[i]) for line in lines] for i in range(N)]
+        del lines[:]
+
 
     max_num = sum([2**i for i in range(k)])
     counter = {_: 0 for _ in range(N + 1)}
